@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flamethrower
+  namespace: kube-system
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      {{- include "labels.selector" . | nindent 6 }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        releaseRevision: {{ .Release.Revision | quote }}
+      labels:
+        {{- include "labels.common" . | nindent 8 }}
+    spec:
+      securityContext:
+        runAsUser: {{ .Values.pod.user.id }}
+        runAsGroup: {{ .Values.pod.group.id }}
+      containers:
+      - name: {{ include "name" . }}
+        image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
+        args:
+        - {{ .Values.flame.target }}
+        - "-Q {{ .Values.flame.qps }}"
+        resources:
+          requests:
+            cpu: {{ .Values.pod.resources.requests.cpu }}
+            memory: {{ .Values.pod.resources.requests.memory }}
+          limits:
+            cpu: {{ .Values.pod.resources.limits.cpu }}
+            memory: {{ .Values.pod.resources.limits.memory }}
