@@ -1,0 +1,31 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  namespace: "kube-system"
+  name: {{ .Values.name }}
+  labels:
+    {{- include "labels.common" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "labels.selector" . | nindent 6 }}
+  egress:
+  - ports:
+    - port: 1053
+      protocol: UDP
+    - port: 1053
+      protocol: TCP
+    # legacy port kept for compatibility
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    to:
+    - podSelector:
+        matchLabels:
+          k8s-app: "coredns"
+      namespaceSelector:
+        matchLabels:
+          name: "kube-system"
+  policyTypes:
+  - Egress

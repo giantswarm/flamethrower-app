@@ -1,3 +1,8 @@
+Installation:
+  V1:
+    Registry:
+      Domain: quay.io
+
 name: flamethrower
 namespace: kube-system
 serviceType: managed
@@ -9,5 +14,25 @@ project:
 image:
   registry: quay.io
   name: giantswarm/flame  # matches upstream image naming https://hub.docker.com/r/ns1labs/flame
-  tag: 0.11.0
   pullPolicy: IfNotPresent
+  tag: 0.11.0
+
+pod:
+  user:
+    id: 1000
+  group:
+    id: 1000
+  resources:
+    # Requests/limits based on 10000 QPS.
+    limits:
+      memory: 50Mi
+      cpu: 1000m
+    requests:
+      cpu: 300m
+      memory: 10Mi
+
+flame:
+  # The target host/service/IP to test
+  target: coredns
+  # The target Queries Per Second (per replica)
+  qps: 10000
