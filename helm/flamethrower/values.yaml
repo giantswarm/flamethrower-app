@@ -1,6 +1,4 @@
-# TEMPLATE-APP: This is set as a reasonable default, feel free to change.
-
-name: {APP-NAME}
+name: flamethrower
 namespace: kube-system
 serviceType: managed
 
@@ -10,6 +8,6 @@ project:
 
 image:
   registry: quay.io
-  name: giantswarm/{APP-NAME}
-  tag: v0.0.1
+  name: giantswarm/flame  # matches upstream image naming https://hub.docker.com/r/ns1labs/flame
+  tag: 0.11.0
   pullPolicy: IfNotPresent

@@ -1,0 +1,10 @@
+apiVersion: v1
+appVersion: 0.0.1
+description: A Helm chart for flamethrower, a DNS testing tool.
+engine: gotpl
+home: https://github.com/giantswarm/flamethrower-app
+# icon: https://example.com/logo.png
+name: flamethrower
+sources:
+- https://github.com/DNS-OARC/flamethrower
+version: [[ .Version ]]
