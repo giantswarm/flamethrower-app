@@ -1,13 +1,11 @@
-[![CircleCI](https://circleci.com/gh/giantswarm/{APP-NAME}-app.svg?style=shield)](https://circleci.com/gh/giantswarm/{APP-NAME}-app)
+[![CircleCI](https://circleci.com/gh/giantswarm/flamethrower-app.svg?style=shield)](https://circleci.com/gh/giantswarm/flamethrower-app)
 
-# {APP-NAME} chart
+# flamethrower chart
 
-Giant Swarm offers a {APP-NAME} App which can be installed in workload clusters.
-Here we define the {APP-NAME} chart with its templates and default configuration.
+Giant Swarm offers a flamethrower App for DNS load and performance testing.
+This App is simply Helm packaging for the [`flamethrower`](https://github.com/DNS-OARC/flamethrower) tool from NS1 Labs.
 
-**What is this app?**
-**Why did we add it?**
-**Who can use it?**
+For additional configuration options, see the upstream repository.
 
 ## Installing
 
@@ -17,6 +15,7 @@ There are 3 ways to install this app onto a workload cluster.
 2. [Using our API](https://docs.giantswarm.io/api/#operation/createClusterAppV5)
 3. Directly creating the [App custom resource](https://docs.giantswarm.io/ui-api/management-api/crd/apps.application.giantswarm.io/) on the management cluster.
 
+<!-- 
 ## Configuring
 
 ### values.yaml
@@ -45,20 +44,8 @@ workload cluster `abc12`:
 ```
 
 See our [full reference page on how to configure applications](https://docs.giantswarm.io/app-platform/app-configuration/) for more details.
-
-## Compatibility
-
-This app has been tested to work with the following workload cluster release versions:
-
-*
-
-## Limitations
-
-Some apps have restrictions on how they can be deployed.
-Not following these limitations will most likely result in a broken deployment.
-
-*
+-->
 
 ## Credit
 
-* {APP HELM REPOSITORY}
+* <https://github.com/DNS-OARC/flamethrower>
