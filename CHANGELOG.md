@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Do not install PodSecurityPolicy if api not available.
+
 ## [0.0.1] - 2021-05-21
 
 [Unreleased]: https://github.com/giantswarm/flamethrower-app/compare/v0.0.1...HEAD
