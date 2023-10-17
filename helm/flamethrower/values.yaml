@@ -36,3 +36,8 @@ flame:
   target: coredns
   # The target Queries Per Second (per replica)
   qps: 10000
+
+
+global:
+  podSecurityStandards:
+    enforced: false
