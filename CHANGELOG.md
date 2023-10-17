@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Make App compliant with PSS policies:
+  - Set seccompProfile to `RuntimeDefault`.
+  - Set `runAsNonRoot` as true.
+  - Drop ALL capabilities.
 - Enable PSP installation with global value.
 - Do not install PodSecurityPolicy if api not available.
 
