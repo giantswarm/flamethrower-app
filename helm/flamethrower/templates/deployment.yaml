@@ -22,6 +22,9 @@ spec:
       securityContext:
         runAsUser: {{ .Values.pod.user.id }}
         runAsGroup: {{ .Values.pod.group.id }}
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - name: {{ include "name" . }}
         image: "{{ .Values.Installation.V1.Registry.Domain }}/{{ .Values.image.name }}:{{ .Values.image.tag }}"
@@ -35,3 +38,8 @@ spec:
           limits:
             cpu: {{ .Values.pod.resources.limits.cpu }}
             memory: {{ .Values.pod.resources.limits.memory }}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
