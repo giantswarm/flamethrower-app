@@ -8,3 +8,5 @@ name: flamethrower
 sources:
 - https://github.com/DNS-OARC/flamethrower
 version: [[ .Version ]]
+annotations:
+  application.giantswarm.io/team: cabbage
