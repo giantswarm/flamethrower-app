@@ -1,7 +1,7 @@
 Installation:
   V1:
     Registry:
-      Domain: quay.io
+      Domain: gsoci.azurecr.io
 
 name: flamethrower
 namespace: kube-system
@@ -12,7 +12,7 @@ project:
   commit: "[[ .SHA ]]"
 
 image:
-  registry: quay.io
+  registry: gsoci.azurecr.io
   name: giantswarm/flame  # matches upstream image naming https://hub.docker.com/r/ns1labs/flame
   pullPolicy: IfNotPresent
   tag: 0.11.0
